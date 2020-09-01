@@ -1,0 +1,14 @@
+useEffect(() => {
+    const sortArray = type => {
+      const types = {
+        albums: 'albums',
+        members: 'members',
+        formed: 'formed_in',
+      };
+      const sortProperty = types[type];
+      const sorted = [...bands].sort((a, b) => b[sortProperty] - a[sortProperty]);
+      setData(sorted);
+    };
+
+    sortArray(sortType);
+  }, [sortType]);
