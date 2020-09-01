@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Artist = ({ name, stars, id, image, artist, setArtists, artists }) => {
   const incrementHandler = () => {
@@ -23,11 +23,18 @@ const Artist = ({ name, stars, id, image, artist, setArtists, artists }) => {
     );
   };
 
+  useEffect(() => {
+    const sorted = [...artists].sort((a, b) => b.stars - a.stars);
+    console.log(sorted);
+    setArtists(sorted);
+  }, [artist]);
+
   return (
     <div className="artist">
       <img
         className="artist-image"
         src="https://www.erinhanson.com/Content/SiteImages/1-Erin-Hanson-Artist-Painting-Live.jpg"
+        alt="artist"
       />
       <li className="artist-item">{name}</li>
       <li>{stars} stars</li>
